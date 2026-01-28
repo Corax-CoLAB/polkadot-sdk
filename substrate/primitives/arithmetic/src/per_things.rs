@@ -513,6 +513,7 @@ impl Rounding {
 
 /// Saturating reciprocal multiplication. Compute `x / self`, saturating at the numeric
 /// bounds instead of overflowing.
+#[inline]
 fn saturating_reciprocal_mul<N, P>(x: N, part: P::Inner, rounding: Rounding) -> N
 where
 	N: Clone
@@ -532,6 +533,7 @@ where
 }
 
 /// Overflow-prune multiplication. Accurately multiply a value by `self` without overflowing.
+#[inline]
 fn overflow_prune_mul<N, P>(x: N, part: P::Inner, rounding: Rounding) -> N
 where
 	N: MultiplyArg + UniqueSaturatedInto<P::Inner>,
@@ -548,6 +550,7 @@ where
 ///
 /// Take the remainder of `x / denom` and multiply by  `numer / denom`. The result can be added
 /// to `x / denom * numer` for an accurate result.
+#[inline]
 fn rational_mul_correction<N, P>(x: N, numer: P::Inner, denom: P::Inner, rounding: Rounding) -> N
 where
 	N: MultiplyArg + UniqueSaturatedInto<P::Inner>,
